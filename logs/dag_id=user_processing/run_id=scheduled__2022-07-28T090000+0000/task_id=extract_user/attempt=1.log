@@ -1,0 +1,26 @@
+[2022-07-28 10:47:39,688] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: user_processing.extract_user scheduled__2022-07-28T09:00:00+00:00 [queued]>
+[2022-07-28 10:47:39,699] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: user_processing.extract_user scheduled__2022-07-28T09:00:00+00:00 [queued]>
+[2022-07-28 10:47:39,699] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2022-07-28 10:47:39,700] {taskinstance.py:1357} INFO - Starting attempt 1 of 1
+[2022-07-28 10:47:39,700] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2022-07-28 10:47:39,715] {taskinstance.py:1377} INFO - Executing <Task(SimpleHttpOperator): extract_user> on 2022-07-28 09:00:00+00:00
+[2022-07-28 10:47:39,773] {standard_task_runner.py:52} INFO - Started process 2551 to run task
+[2022-07-28 10:47:39,777] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'user_processing', 'extract_user', 'scheduled__2022-07-28T09:00:00+00:00', '--job-id', '43', '--raw', '--subdir', 'DAGS_FOLDER/user_processing.py', '--cfg-path', '/tmp/tmpi1n05dzg', '--error-file', '/tmp/tmp0f2l3upy']
+[2022-07-28 10:47:39,778] {standard_task_runner.py:80} INFO - Job 43: Subtask extract_user
+[2022-07-28 10:47:39,843] {task_command.py:369} INFO - Running <TaskInstance: user_processing.extract_user scheduled__2022-07-28T09:00:00+00:00 [running]> on host 890323d6f4a0
+[2022-07-28 10:47:39,934] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=user_processing
+AIRFLOW_CTX_TASK_ID=extract_user
+AIRFLOW_CTX_EXECUTION_DATE=2022-07-28T09:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2022-07-28T09:00:00+00:00
+[2022-07-28 10:47:39,936] {http.py:102} INFO - Calling HTTP method
+[2022-07-28 10:47:39,948] {base.py:68} INFO - Using connection ID 'user_api' for task execution.
+[2022-07-28 10:47:39,951] {http.py:129} INFO - Sending 'GET' to url:  https://randomuser.me/api/
+[2022-07-28 10:47:40,965] {http.py:106} INFO - {"results":[{"gender":"male","name":{"title":"Mr","first":"Radomir","last":"Miloradovich"},"location":{"street":{"number":7672,"name":"Morska"},"city":"Irmino","state":"Ternopilska","country":"Ukraine","postcode":30726,"coordinates":{"latitude":"74.0644","longitude":"-35.0187"},"timezone":{"offset":"0:00","description":"Western Europe Time, London, Lisbon, Casablanca"}},"email":"radomir.miloradovich@example.com","login":{"uuid":"b97c95c3-0e8e-49c6-9b3a-791fc8371b7b","username":"blueostrich537","password":"request","salt":"b3I5MXAM","md5":"c861dc3bfbf670636b84ad94c712cb07","sha1":"fb10b6254d2f404d13a6a48666dff9ee0274d237","sha256":"0aff491414855b625bd618c4f3cbcee36b6c2fd0f4fb1cdf862e21f45d43447f"},"dob":{"date":"1977-06-12T19:38:33.943Z","age":45},"registered":{"date":"2004-06-27T05:07:36.862Z","age":18},"phone":"(098) O14-1646","cell":"(096) I76-7378","id":{"name":"","value":null},"picture":{"large":"https://randomuser.me/api/portraits/men/98.jpg","medium":"https://randomuser.me/api/portraits/med/men/98.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/men/98.jpg"},"nat":"UA"}],"info":{"seed":"aef9d97e0f2a4b5d","results":1,"page":1,"version":"1.4"}}
+[2022-07-28 10:47:40,999] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=user_processing, task_id=extract_user, execution_date=20220728T090000, start_date=20220728T104739, end_date=20220728T104740
+[2022-07-28 10:47:41,033] {local_task_job.py:156} INFO - Task exited with return code 0
+[2022-07-28 10:47:41,081] {local_task_job.py:273} INFO - 1 downstream tasks scheduled from follow-on schedule check

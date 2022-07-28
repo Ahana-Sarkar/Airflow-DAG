@@ -1,0 +1,34 @@
+[2022-07-28 10:09:15,384] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: user_processing.extract_user manual__2022-07-28T10:09:10.505420+00:00 [queued]>
+[2022-07-28 10:09:15,394] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: user_processing.extract_user manual__2022-07-28T10:09:10.505420+00:00 [queued]>
+[2022-07-28 10:09:15,394] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2022-07-28 10:09:15,395] {taskinstance.py:1357} INFO - Starting attempt 1 of 1
+[2022-07-28 10:09:15,395] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2022-07-28 10:09:15,409] {taskinstance.py:1377} INFO - Executing <Task(SimpleHttpOperator): extract_user> on 2022-07-28 10:09:10.505420+00:00
+[2022-07-28 10:09:15,414] {standard_task_runner.py:52} INFO - Started process 708 to run task
+[2022-07-28 10:09:15,416] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'user_processing', 'extract_user', 'manual__2022-07-28T10:09:10.505420+00:00', '--job-id', '30', '--raw', '--subdir', 'DAGS_FOLDER/user_processing.py', '--cfg-path', '/tmp/tmp__34qli6', '--error-file', '/tmp/tmpic116imw']
+[2022-07-28 10:09:15,417] {standard_task_runner.py:80} INFO - Job 30: Subtask extract_user
+[2022-07-28 10:09:15,472] {task_command.py:369} INFO - Running <TaskInstance: user_processing.extract_user manual__2022-07-28T10:09:10.505420+00:00 [running]> on host 890323d6f4a0
+[2022-07-28 10:09:15,541] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=user_processing
+AIRFLOW_CTX_TASK_ID=extract_user
+AIRFLOW_CTX_EXECUTION_DATE=2022-07-28T10:09:10.505420+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-07-28T10:09:10.505420+00:00
+[2022-07-28 10:09:15,542] {http.py:102} INFO - Calling HTTP method
+[2022-07-28 10:09:15,550] {base.py:68} INFO - Using connection ID 'user_api' for task execution.
+[2022-07-28 10:09:15,552] {http.py:129} INFO - Sending 'GET' to url:  https://randomuser.me/api/
+[2022-07-28 10:09:16,656] {http.py:106} INFO - {"results":[{"gender":"female","name":{"title":"Ms","first":"Viivi","last":"Rantanen"},"location":{"street":{"number":5777,"name":"Hatanpään Valtatie"},"city":"Espoo","state":"Pirkanmaa","country":"Finland","postcode":86885,"coordinates":{"latitude":"-29.6135","longitude":"129.8283"},"timezone":{"offset":"+9:30","description":"Adelaide, Darwin"}},"email":"viivi.rantanen@example.com","login":{"uuid":"fcfe9209-d51b-4543-8c66-5865470b5abc","username":"happygoose604","password":"hero","salt":"xhTttmcV","md5":"78b80864924b9b2fd7e79893ebcdef66","sha1":"435fe2df584779ce179d3e17172b3a2703eb20ce","sha256":"4a186bffaf4b1838d8400d082228541fdf8e363f43f1534db1a0d9034358004c"},"dob":{"date":"1967-08-31T03:29:15.557Z","age":54},"registered":{"date":"2009-03-27T07:12:00.532Z","age":13},"phone":"05-073-667","cell":"042-250-16-22","id":{"name":"HETU","value":"NaNNA284undefined"},"picture":{"large":"https://randomuser.me/api/portraits/women/27.jpg","medium":"https://randomuser.me/api/portraits/med/women/27.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/women/27.jpg"},"nat":"FI"}],"info":{"seed":"c97899d588772393","results":1,"page":1,"version":"1.4"}}
+[2022-07-28 10:09:16,657] {taskinstance.py:1889} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/http/operators/http.py", line 113, in execute
+    return self.response_filter(response, **kwargs)
+  File "/opt/airflow/dags/user_processing.py", line 59, in <lambda>
+    response_filter = lambda resposne: json.loads(response.text),
+AttributeError: module 'urllib.response' has no attribute 'text'
+[2022-07-28 10:09:16,669] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=user_processing, task_id=extract_user, execution_date=20220728T100910, start_date=20220728T100915, end_date=20220728T100916
+[2022-07-28 10:09:16,681] {standard_task_runner.py:97} ERROR - Failed to execute job 30 for task extract_user (module 'urllib.response' has no attribute 'text'; 708)
+[2022-07-28 10:09:16,714] {local_task_job.py:156} INFO - Task exited with return code 1
+[2022-07-28 10:09:16,767] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check
