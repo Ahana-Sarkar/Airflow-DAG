@@ -1,0 +1,91 @@
+[2022-07-28 10:07:19,148] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: user_processing.is_api_available manual__2022-07-28T10:07:16.630428+00:00 [queued]>
+[2022-07-28 10:07:19,156] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: user_processing.is_api_available manual__2022-07-28T10:07:16.630428+00:00 [queued]>
+[2022-07-28 10:07:19,157] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2022-07-28 10:07:19,157] {taskinstance.py:1357} INFO - Starting attempt 1 of 1
+[2022-07-28 10:07:19,158] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2022-07-28 10:07:19,173] {taskinstance.py:1377} INFO - Executing <Task(HttpSensor): is_api_available> on 2022-07-28 10:07:16.630428+00:00
+[2022-07-28 10:07:19,178] {standard_task_runner.py:52} INFO - Started process 608 to run task
+[2022-07-28 10:07:19,180] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'user_processing', 'is_api_available', 'manual__2022-07-28T10:07:16.630428+00:00', '--job-id', '27', '--raw', '--subdir', 'DAGS_FOLDER/user_processing.py', '--cfg-path', '/tmp/tmpwc6svn63', '--error-file', '/tmp/tmpfgzwzawj']
+[2022-07-28 10:07:19,181] {standard_task_runner.py:80} INFO - Job 27: Subtask is_api_available
+[2022-07-28 10:07:19,234] {task_command.py:369} INFO - Running <TaskInstance: user_processing.is_api_available manual__2022-07-28T10:07:16.630428+00:00 [running]> on host 890323d6f4a0
+[2022-07-28 10:07:19,302] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=user_processing
+AIRFLOW_CTX_TASK_ID=is_api_available
+AIRFLOW_CTX_EXECUTION_DATE=2022-07-28T10:07:16.630428+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-07-28T10:07:16.630428+00:00
+[2022-07-28 10:07:19,304] {http.py:97} INFO - Poking: api/
+[2022-07-28 10:07:19,312] {base.py:68} INFO - Using connection ID 'user_api' for task execution.
+[2022-07-28 10:07:19,314] {http.py:129} INFO - Sending 'GET' to url: http://api/:80/api/
+[2022-07-28 10:07:29,327] {http.py:187} WARNING - HTTPConnectionPool(host='api', port=80): Max retries exceeded with url: /:80/api/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f32ee566490>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')) Tenacity will retry to execute the operation
+[2022-07-28 10:07:29,328] {taskinstance.py:1889} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connection.py", line 175, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/util/connection.py", line 72, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "/usr/local/lib/python3.7/socket.py", line 752, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 710, in urlopen
+    chunked=chunked,
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 398, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connection.py", line 239, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "/usr/local/lib/python3.7/http/client.py", line 1281, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/local/lib/python3.7/http/client.py", line 1327, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.7/http/client.py", line 1276, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.7/http/client.py", line 1036, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.7/http/client.py", line 976, in send
+    self.connect()
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connection.py", line 205, in connect
+    conn = self._new_conn()
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connection.py", line 187, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7f32ee566490>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/adapters.py", line 450, in send
+    timeout=timeout
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 786, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/util/retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='api', port=80): Max retries exceeded with url: /:80/api/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f32ee566490>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/sensors/base.py", line 277, in execute
+    poke_return = self.poke(context)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/http/sensors/http.py", line 103, in poke
+    extra_options=self.extra_options,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/http/hooks/http.py", line 130, in run
+    return self.run_and_check(session, prepped_request, extra_options)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/http/hooks/http.py", line 188, in run_and_check
+    raise ex
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/http/hooks/http.py", line 180, in run_and_check
+    response = session.send(prepped_request, **send_kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='api', port=80): Max retries exceeded with url: /:80/api/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f32ee566490>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))
+[2022-07-28 10:07:29,338] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=user_processing, task_id=is_api_available, execution_date=20220728T100716, start_date=20220728T100719, end_date=20220728T100729
+[2022-07-28 10:07:29,351] {standard_task_runner.py:97} ERROR - Failed to execute job 27 for task is_api_available (HTTPConnectionPool(host='api', port=80): Max retries exceeded with url: /:80/api/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f32ee566490>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')); 608)
+[2022-07-28 10:07:29,391] {local_task_job.py:156} INFO - Task exited with return code 1
+[2022-07-28 10:07:29,440] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check
